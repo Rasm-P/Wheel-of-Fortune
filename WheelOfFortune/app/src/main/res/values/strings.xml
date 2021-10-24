@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">s123456 Wheel of Fortune</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="word_guessing">word guessing</string>
+    <string name="game_lost">game lost</string>
+    <string name="game_won">game won</string>)
+</resources>
