@@ -6,7 +6,8 @@
         <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/fragment_game_lost.xml" value="0.1" />
         <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/fragment_game_won.xml" value="0.1" />
-        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/fragment_word_guessing.xml" value="0.1" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/fragment_word_guessing.xml" value="0.25" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/list_word.xml" value="0.35260416666666666" />
       </map>
     </option>
   </component>

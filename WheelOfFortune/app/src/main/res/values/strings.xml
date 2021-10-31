@@ -1,8 +1,19 @@
 <resources>
     <string name="app_name">s123456 Wheel of Fortune</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="word_guessing">word guessing</string>
     <string name="game_lost">game lost</string>
-    <string name="game_won">game won</string>)
+    <string name="game_won">game won</string>
+
+    <string name="category1">Test</string>
+    <string name="category2">Random</string>
+    <string name="category3">Birthday</string>
+    <string name="category4">Humanity</string>
+    <string name="category5">Android</string>
+
+    <string name="phrase1">Testing phrase</string>
+    <string name="phrase2">Randomized wordlist</string>
+    <string name="phrase3">Birthday surprise</string>
+    <string name="phrase4">Believing in humanity</string>
+    <string name="phrase5">Android and kotlin</string>
 </resources>
