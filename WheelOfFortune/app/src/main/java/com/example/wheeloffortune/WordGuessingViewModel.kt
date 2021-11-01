@@ -18,11 +18,14 @@ class WordGuessingViewModel() : ViewModel(){
 
     private lateinit var _currentCategory: Category
     val currentCategory: Category
-        get() =_currentCategory
+        get() = _currentCategory
+
+    private lateinit var _wordPhrase: String
+    val wordPhrase: String
+        get() = _wordPhrase
 
     private var categoryList: List<Category> = CategoryData().loadCategories()
     private var revealedCharters: MutableList<Char> = ArrayList()
-    private lateinit var wordPhrase: String
 
     init {
         getNextPhrase()
@@ -30,7 +33,7 @@ class WordGuessingViewModel() : ViewModel(){
 
     private fun getNextPhrase() {
         _currentCategory = categoryList.random()
-        wordPhrase = _currentCategory.phraseList.random()
+        _wordPhrase = _currentCategory.phraseList.random()
     }
 
     fun restartGame() {
@@ -41,32 +44,12 @@ class WordGuessingViewModel() : ViewModel(){
     }
 
     fun getPhraseWithRevealed(): List<Char> {
-        var tempPhrase = wordPhrase
-        for (char in wordPhrase) {
+        var tempPhrase = _wordPhrase
+        for (char in _wordPhrase) {
             if (char != ' ' && !revealedCharters.contains(char.lowercaseChar())) {
-                tempPhrase = tempPhrase.replace(" ","")
+                tempPhrase = tempPhrase.replace(char,'*')
             }
         }
         return tempPhrase.toList()
     }
-
-    fun getLogestWord(): Int {
-        val strArr = wordPhrase.split(" ")
-        var maxLength = 0
-        for (str in strArr) {
-            if (str.length > maxLength) {
-                maxLength = str.length
-            }
-        }
-        return maxLength
-    }
-
-    fun getWordsPerline(): Array<Int> {
-        val strArr = wordPhrase.split(" ")
-        return strArr.map { it.length }.toTypedArray<Int>()
-    }
-
-
-
-
 }
