@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wheeloffortune.R
 import com.example.wheeloffortune.model.Category
 
-class WordAdapter(private val context: Context, private val dataset: List<String>) : RecyclerView.Adapter<WordAdapter.ItemViewHolder>() {
+class WordAdapter(private val context: Context, private val dataset: List<Char>) : RecyclerView.Adapter<WordAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.word_title)
@@ -22,7 +22,7 @@ class WordAdapter(private val context: Context, private val dataset: List<String
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.textView.text = item
+        holder.textView.text = item.toString()
     }
 
     override fun getItemCount() = dataset.size

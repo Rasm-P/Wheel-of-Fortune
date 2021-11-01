@@ -40,15 +40,30 @@ class WordGuessingViewModel() : ViewModel(){
         getNextPhrase()
     }
 
-    fun getPhraseWithRevealed(): List<String> {
+    fun getPhraseWithRevealed(): List<Char> {
         var tempPhrase = wordPhrase
         for (char in wordPhrase) {
             if (char != ' ' && !revealedCharters.contains(char.lowercaseChar())) {
-                tempPhrase = tempPhrase.replace(char,'*')
-                println(!revealedCharters.contains(char))
+                tempPhrase = tempPhrase.replace(" ","")
             }
         }
-        return tempPhrase.split(" ").toList()
+        return tempPhrase.toList()
+    }
+
+    fun getLogestWord(): Int {
+        val strArr = wordPhrase.split(" ")
+        var maxLength = 0
+        for (str in strArr) {
+            if (str.length > maxLength) {
+                maxLength = str.length
+            }
+        }
+        return maxLength
+    }
+
+    fun getWordsPerline(): Array<Int> {
+        val strArr = wordPhrase.split(" ")
+        return strArr.map { it.length }.toTypedArray<Int>()
     }
 
 

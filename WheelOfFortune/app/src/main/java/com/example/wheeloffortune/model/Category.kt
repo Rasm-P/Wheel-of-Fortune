@@ -4,6 +4,6 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
 data class Category(
-    @StringRes val categoryResourceId: Int,
+    val categoryResource: String,
     val phraseList: List<String>
 )
