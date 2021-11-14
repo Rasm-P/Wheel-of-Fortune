@@ -4,6 +4,9 @@
     <string name="word_guessing">word guessing</string>
     <string name="game_lost">game lost</string>
     <string name="game_won">game won</string>
+    <string name="points">Points: %d</string>
+    <string name="lives">Lives: %d</string>
+    <string name="category_title">Category: %s</string>
 
     <string name="category1">Test</string>
     <string name="category2">Random</string>
@@ -16,4 +19,8 @@
     <string name="phrase3">Birthday surprise</string>
     <string name="phrase4">Believing in humanity</string>
     <string name="phrase5">Android and kotlin</string>
+    <string name="spinn_the_wheel">Spinn The Wheel</string>
+    <string name="enter_your_phrase">Enter your phrase</string>
+    <string name="submit_phrase">Submit</string>
+    <string name="wrong_awnser">Wrong awnser!</string>
 </resources>

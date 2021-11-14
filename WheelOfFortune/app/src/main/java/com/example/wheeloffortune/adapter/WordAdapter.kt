@@ -1,15 +1,16 @@
 package com.example.wheeloffortune.adapter
 
-import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wheeloffortune.R
-import com.example.wheeloffortune.model.Category
 
-class WordAdapter(private val context: Context, private val dataset: List<Char>) : RecyclerView.Adapter<WordAdapter.ItemViewHolder>() {
+class WordAdapter : RecyclerView.Adapter<WordAdapter.ItemViewHolder>() {
+    private val dataset = MutableLiveData<List<Char>>()
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.word_title)
@@ -21,9 +22,18 @@ class WordAdapter(private val context: Context, private val dataset: List<Char>)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = dataset[position]
+        val item = dataset.value!![position]
         holder.textView.text = item.toString()
     }
 
-    override fun getItemCount() = dataset.size
+    override fun getItemCount(): Int {
+        return dataset.value!!.size
+
+    }
+
+    fun setCharList(charList: List<Char>) {
+        dataset.value = charList
+        notifyDataSetChanged()
+        Log.v("AdapterLog", dataset.value.toString())
+    }
 }
