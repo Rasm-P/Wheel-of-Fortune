@@ -1,13 +1,13 @@
 package com.example.wheeloffortune
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wheeloffortune.adapter.WordAdapter
@@ -49,21 +49,31 @@ class WordGuessing : Fragment() {
     }
 
     private fun onSubmitGuessPhrase() {
-        val guessPhrase = binding.textInput.text.toString()
-        val firstChar = guessPhrase.first().lowercaseChar()
-        Log.v("FirstChar", firstChar.toString())
+        val guessChar = binding.textInput.text.toString()
+        setError(false)
 
-        if (viewModel.wordPhrase == guessPhrase){
-            setError(false)
-            //Todo update this if won
-            snack("You won!")
-            viewModel.restartGame()
-        } else if (viewModel.wordPhrase.contains(firstChar) && viewModel.doesNotContainChar(firstChar)) {
-            setError(false)
-            viewModel.addPoints()
-            viewModel.addRevealedChar(firstChar)
-            isGuessing = false
-            updateViewForGuessing()
+        if(guessChar.isNotEmpty()) {
+            val firstChar = guessChar.first().lowercaseChar()
+
+            if (viewModel.wordPhrase.lowercase().contains(firstChar) && viewModel.doesNotContainChar(firstChar)) {
+                viewModel.addPoints(firstChar)
+                viewModel.addRevealedChar(firstChar)
+                isGuessing = false
+                updateViewForGuessing()
+                snack("Letters revealed!")
+            } else {
+                viewModel.looseLife()
+                isGuessing = false
+                updateViewForGuessing()
+                snack("The letter was not present!")
+            }
+
+            if (viewModel.isGameWon()) {
+                gameWon()
+            } else if (viewModel.isGameLost()) {
+                gameLost()
+            }
+
         } else {
             setError(true)
         }
@@ -92,15 +102,31 @@ class WordGuessing : Fragment() {
                 snack("Points: 900")}
             10 -> {viewModel.setPointsToAdd(1000)
                 snack("Points: 1000")}
-            11 -> {snack("Extra turn!")
+            11 -> {viewModel.gainLife()
+                snack("Extra turn!")
                 isGuessing = false}
-            12 -> {snack("Miss turn!")
+            12 -> {viewModel.looseLife()
+                snack("Miss turn!")
                 isGuessing = false}
             else -> {viewModel.bankrupt()
                 snack("Bankrupt!")
                 isGuessing = false}
         }
         updateViewForGuessing()
+    }
+
+    private fun gameWon() {
+        val bundle = Bundle()
+        viewModel.points.value?.let { bundle.putInt("points", it) }
+        binding.root.findNavController().navigate(R.id.action_wordGuessing_to_gameWon, bundle)
+        viewModel.restartGame()
+    }
+
+    private fun gameLost() {
+        val bundle = Bundle()
+        viewModel.points.value?.let { bundle.putInt("points", it) }
+        binding.root.findNavController().navigate(R.id.action_wordGuessing_to_gameLost, bundle)
+        viewModel.restartGame()
     }
 
     private fun snack(message: String, duration: Int = Snackbar.LENGTH_LONG) {
@@ -121,10 +147,10 @@ class WordGuessing : Fragment() {
         }
     }
 
-    private fun setError(error: Boolean) {
+    private fun setError(error: Boolean, stringId: Int = R.string.wrong_input) {
         if (error) {
             binding.guessPhraseTextField.isErrorEnabled = true
-            binding.textInput.error = getString(R.string.wrong_awnser)
+            binding.textInput.error = getString(stringId)
         } else {
             binding.guessPhraseTextField.isErrorEnabled = false
             binding.textInput.text = null

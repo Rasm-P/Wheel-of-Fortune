@@ -45,7 +45,7 @@ class WordGuessingViewModel() : ViewModel(){
 
     fun restartGame() {
         _points.value = 0
-        _lives.value = 0
+        _lives.value = 5
         _revealedCharters.clear()
         getNextPhrase()
         _charListWithRevealed.value = getPhraseWithRevealed().value
@@ -67,8 +67,10 @@ class WordGuessingViewModel() : ViewModel(){
         _pointsToAdd.value = pointsToAdd
     }
 
-    fun addPoints() {
-        _points.value = _pointsToAdd.value?.let { _points.value?.plus(it) }
+    fun addPoints(letter: Char) {
+        var count = _wordPhrase.lowercase().filter { it == letter }.count()
+        var multiply = _pointsToAdd.value?.times(count)
+        _points.value = multiply?.let { _points.value?.plus(it) }
     }
 
     fun bankrupt() {
@@ -89,5 +91,28 @@ class WordGuessingViewModel() : ViewModel(){
             }
         }
         return true
+    }
+
+    fun gainLife() {
+        _lives.value = _lives.value?.plus(1)
+    }
+
+    fun looseLife() {
+        _lives.value = _lives.value?.minus(1)
+    }
+
+    fun isGameWon(): Boolean {
+        if (getPhraseWithRevealed().value?.contains('*')!!) {
+            return false
+        }
+        return true
+    }
+
+    fun isGameLost(): Boolean {
+        Log.v("WheelLog", _lives.value.toString())
+        if (_lives.value!! <= 0) {
+            return true
+        }
+        return false
     }
 }
