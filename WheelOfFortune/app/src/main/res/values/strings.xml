@@ -13,4 +13,6 @@
     <string name="enter_your_phrase">Enter your phrase</string>
     <string name="submit_phrase">Submit</string>
     <string name="play_again">Play again!</string>
+    <string name="field_cannot_be_empty">Field cannot be empty!</string>
+    <string name="letter_already_revealed">Letter already revealed!</string>
 </resources>

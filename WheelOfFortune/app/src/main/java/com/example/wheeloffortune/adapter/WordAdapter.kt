@@ -1,6 +1,5 @@
 package com.example.wheeloffortune.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +33,5 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ItemViewHolder>() {
     fun setCharList(charList: List<Char>) {
         dataset.value = charList
         notifyDataSetChanged()
-        Log.v("AdapterLog", dataset.value.toString())
     }
 }

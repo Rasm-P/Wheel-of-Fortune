@@ -38,7 +38,7 @@
             android:id="@+id/category_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@{@string/category_title(wordGuessingViewModel.currentCategory.categoryResource)}"
+            android:text="@{@string/category_title(wordGuessingViewModel.currentCategory.category)}"
             tools:text="Title"/>
 
         <androidx.recyclerview.widget.RecyclerView

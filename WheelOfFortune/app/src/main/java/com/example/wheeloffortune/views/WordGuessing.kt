@@ -16,6 +16,7 @@ import com.example.wheeloffortune.databinding.FragmentWordGuessingBinding
 import com.example.wheeloffortune.viewModels.WordGuessingViewModel
 import com.google.android.material.snackbar.Snackbar
 
+// Made with inspiration from developer Unscramble app: https://developer.android.com/courses/pathways/android-basics-kotlin-unit-3-pathway-3
 class WordGuessing : Fragment() {
 
     private lateinit var binding: FragmentWordGuessingBinding
@@ -57,8 +58,9 @@ class WordGuessing : Fragment() {
 
         if(guessChar.isNotEmpty()) {
             val firstChar = guessChar.first().lowercaseChar()
-
-            if (viewModel.wordPhrase.lowercase().contains(firstChar) && viewModel.doesNotContainChar(firstChar)) {
+            if (viewModel.revealedCharacters.contains(firstChar)) {
+                setError(true, R.string.letter_already_revealed)
+            } else if (viewModel.wordPhrase.lowercase().contains(firstChar) && viewModel.doesNotContainChar(firstChar)) {
                 viewModel.addPoints(firstChar)
                 viewModel.addRevealedChar(firstChar)
                 isGuessing = false
@@ -78,7 +80,7 @@ class WordGuessing : Fragment() {
             }
 
         } else {
-            setError(true)
+            setError(true, R.string.field_cannot_be_empty)
         }
     }
 
@@ -109,6 +111,9 @@ class WordGuessing : Fragment() {
                 snack("Extra turn!")
                 isGuessing = false}
             12 -> {viewModel.looseLife()
+                if (viewModel.isGameLost()) {
+                    gameLost()
+                }
                 snack("Miss turn!")
                 isGuessing = false}
             else -> {viewModel.bankrupt()
@@ -141,11 +146,11 @@ class WordGuessing : Fragment() {
             binding.guessPhraseTextField.visibility = View.VISIBLE
             binding.textInput.visibility = View.VISIBLE
             binding.submitPhrase.visibility = View.VISIBLE
-            binding.spinTheWheel.visibility = View.INVISIBLE
+            binding.spinTheWheel.visibility = View.GONE
         } else {
-            binding.guessPhraseTextField.visibility = View.INVISIBLE
-            binding.textInput.visibility = View.INVISIBLE
-            binding.submitPhrase.visibility = View.INVISIBLE
+            binding.guessPhraseTextField.visibility = View.GONE
+            binding.textInput.visibility = View.GONE
+            binding.submitPhrase.visibility = View.GONE
             binding.spinTheWheel.visibility = View.VISIBLE
         }
     }
