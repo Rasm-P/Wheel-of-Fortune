@@ -1,7 +1,6 @@
 package com.example.wheeloffortune.data
 
-import com.example.wheeloffortune.R
-import com.example.wheeloffortune.model.Category
+import com.example.wheeloffortune.models.Category
 
 class CategoryData() {
 

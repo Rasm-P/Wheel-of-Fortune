@@ -1,11 +1,11 @@
-package com.example.wheeloffortune
+package com.example.wheeloffortune.viewModels
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.wheeloffortune.data.CategoryData
-import com.example.wheeloffortune.model.Category
+import com.example.wheeloffortune.models.Category
 
 
 class WordGuessingViewModel() : ViewModel(){

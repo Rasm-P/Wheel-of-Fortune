@@ -1,10 +1,10 @@
-package com.example.wheeloffortune
+package com.example.wheeloffortune.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.wheeloffortune.databinding.ActivityMainBinding
+import com.example.wheeloffortune.R
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController

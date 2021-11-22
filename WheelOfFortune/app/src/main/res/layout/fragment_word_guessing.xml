@@ -6,13 +6,13 @@
     <data>
         <variable
             name="wordGuessingViewModel"
-            type="com.example.wheeloffortune.WordGuessingViewModel" />
+            type="com.example.wheeloffortune.viewModels.WordGuessingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".WordGuessing">
+        tools:context=".views.WordGuessing">
 
         <TextView
             android:id="@+id/lives"

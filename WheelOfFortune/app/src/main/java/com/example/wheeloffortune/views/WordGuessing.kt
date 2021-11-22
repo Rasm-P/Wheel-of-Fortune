@@ -1,4 +1,4 @@
-package com.example.wheeloffortune
+package com.example.wheeloffortune.views
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wheeloffortune.R
 import com.example.wheeloffortune.adapter.WordAdapter
 import com.example.wheeloffortune.databinding.FragmentWordGuessingBinding
+import com.example.wheeloffortune.viewModels.WordGuessingViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class WordGuessing : Fragment() {
@@ -24,7 +26,8 @@ class WordGuessing : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_word_guessing, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_word_guessing, container, false)
         val recyclerView = binding.root.findViewById<RecyclerView>(R.id.recycler_view)
 
         var adapter = WordAdapter()
