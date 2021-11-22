@@ -1,28 +1,33 @@
 package com.example.wheeloffortune
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import com.example.wheeloffortune.databinding.FragmentGameLostBinding
+import com.example.wheeloffortune.databinding.FragmentWordGuessingBinding
 import kotlin.properties.Delegates
 
 class GameLost : Fragment() {
-    private var points by Delegates.notNull<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_game_lost, container, false)
+        var view = inflater.inflate(R.layout.fragment_game_lost, container, false)
+        var points = arguments?.let { it.getInt("points") }
+        view.findViewById<TextView>(R.id.game_points).text = points.toString()
+        view.findViewById<TextView>(R.id.play_again_button).setOnClickListener { playAgain() }
+
+        return view
     }
 
-    //Needs work
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        arguments?.let { points = it.getInt("points") }
-
-        view.findViewById<TextView>(R.id.game_points).setText(points)
+    private fun playAgain() {
+        view?.findNavController()?.navigate(R.id.action_gameLost_to_wordGuessing)
     }
 }

@@ -12,4 +12,5 @@
     <string name="spin_the_wheel">Spin The Wheel</string>
     <string name="enter_your_phrase">Enter your phrase</string>
     <string name="submit_phrase">Submit</string>
+    <string name="play_again">Play again!</string>
 </resources>
