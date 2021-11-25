@@ -11,8 +11,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wheeloffortune.R
-import com.example.wheeloffortune.adapter.WordAdapter
+import com.example.wheeloffortune.adapters.WordAdapter
 import com.example.wheeloffortune.databinding.FragmentWordGuessingBinding
+import com.example.wheeloffortune.utils.SpacingDecorator
 import com.example.wheeloffortune.viewModels.WordGuessingViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -33,10 +34,12 @@ class WordGuessing : Fragment() {
 
         var adapter = WordAdapter()
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = GridLayoutManager(context, viewModel.wordPhrase.length)
+        recyclerView.layoutManager = GridLayoutManager(context, 1)
+        var decorator = SpacingDecorator(10)
+        recyclerView.addItemDecoration(decorator)
         recyclerView.setHasFixedSize(true)
 
-        viewModel.charListWithRevealed.observe(viewLifecycleOwner,
+        viewModel.wordListWithRevealed.observe(viewLifecycleOwner,
             { notes -> adapter.setCharList(notes) })
 
         return binding.root

@@ -12,14 +12,28 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="16dp"
         tools:context=".views.WordGuessing">
+
+        <TextView
+            android:id="@+id/instruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/guess_the_phrase_by_revealing_letters"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category_title"/>
 
         <TextView
             android:id="@+id/lives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{@string/lives(wordGuessingViewModel.lives)}"
-            app:layout_constraintBottom_toTopOf="parent"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:layout_constraintBottom_toTopOf="@+id/category_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Lives"/>
@@ -29,55 +43,67 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{@string/points(wordGuessingViewModel.points)}"
-            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Points" />
 
         <TextView
             android:id="@+id/category_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@{@string/category_title(wordGuessingViewModel.currentCategory.category)}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/instruction"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lives"
             tools:text="Title"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:scrollbars="vertical"
             app:layoutManager="LinearLayoutManager"
-            app:layout_constraintTop_toTopOf="@+id/category_title"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instruction" />
 
         <Button
             android:id="@+id/spin_the_wheel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="@string/spin_the_wheel"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guess_phrase_text_field" />
 
         <Button
             android:id="@+id/submit_phrase"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="@string/submit_phrase"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guess_phrase_text_field" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/guess_phrase_text_field"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/enter_your_phrase"
-            app:errorIconDrawable="@drawable/ic_error"
+            android:layout_marginTop="16dp"
+            android:hint="@string/enter_a_letter"
+            app:errorIconDrawable="@drawable/ic_baseline_error_outline_24"
             app:layout_constraintBottom_toTopOf="@+id/spin_the_wheel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recycler_view">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_input"
                 android:layout_width="match_parent"

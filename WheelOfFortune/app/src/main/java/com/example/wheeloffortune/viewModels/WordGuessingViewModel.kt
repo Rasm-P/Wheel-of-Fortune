@@ -30,13 +30,13 @@ class WordGuessingViewModel() : ViewModel(){
     val wordPhrase: String
         get() = _wordPhrase
 
-    private val _charListWithRevealed = MutableLiveData<List<Char>>()
-    val charListWithRevealed: LiveData<List<Char>>
-         get() = _charListWithRevealed
+    private val _wordListWithRevealed = MutableLiveData<List<String>>()
+    val wordListWithRevealed: LiveData<List<String>>
+         get() = _wordListWithRevealed
 
     init {
         getNextPhrase()
-        _charListWithRevealed.value = getPhraseWithRevealed().value
+        _wordListWithRevealed.value = getPhraseWithRevealed().value
     }
 
     private fun getNextPhrase() {
@@ -49,18 +49,18 @@ class WordGuessingViewModel() : ViewModel(){
         _lives.value = 5
         _revealedCharacters.clear()
         getNextPhrase()
-        _charListWithRevealed.value = getPhraseWithRevealed().value
+        _wordListWithRevealed.value = getPhraseWithRevealed().value
     }
 
-    private fun getPhraseWithRevealed(): MutableLiveData<List<Char>> {
+    private fun getPhraseWithRevealed(): MutableLiveData<List<String>> {
         var tempPhrase = _wordPhrase
         for (char in _wordPhrase) {
             if (char != ' ' && !_revealedCharacters.contains(char.lowercaseChar())) {
                 tempPhrase = tempPhrase.replace(char,'*')
             }
         }
-        var tempMutableLive = MutableLiveData<List<Char>>()
-        tempMutableLive.value = tempPhrase.toMutableList()
+        var tempMutableLive = MutableLiveData<List<String>>()
+        tempMutableLive.value = tempPhrase.split(" ").toMutableList()
         return tempMutableLive
     }
 
@@ -80,7 +80,7 @@ class WordGuessingViewModel() : ViewModel(){
 
     fun addRevealedChar(char : Char) {
         _revealedCharacters.add(char)
-        _charListWithRevealed.value = getPhraseWithRevealed().value
+        _wordListWithRevealed.value = getPhraseWithRevealed().value
     }
 
     fun doesNotContainChar(char : Char) : Boolean {
@@ -101,7 +101,7 @@ class WordGuessingViewModel() : ViewModel(){
     }
 
     fun isGameWon(): Boolean {
-        if (getPhraseWithRevealed().value?.contains('*')!!) {
+        if (_wordListWithRevealed.value?.filter { word -> word.contains("*") }!!.any()) {
             return false
         }
         return true

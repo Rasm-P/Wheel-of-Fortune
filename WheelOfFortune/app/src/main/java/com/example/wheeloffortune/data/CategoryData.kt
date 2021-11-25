@@ -6,7 +6,7 @@ class CategoryData() {
 
     fun loadCategories(): List<Category> {
         return listOf<Category>(
-            Category("Birthday", listOf("Birthday surprise"))
+            Category("Birthday", listOf("Birthday surprise party"))
         )
     }
 }

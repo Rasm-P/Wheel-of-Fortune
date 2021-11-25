@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">s123456 Wheel of Fortune</string>
+    <string name="app_name">s215777 Wheel of Fortune</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="word_guessing">word guessing</string>
     <string name="game_lost">Game lost</string>
@@ -10,9 +10,10 @@
     <string name="wrong_input">Wrong input!</string>
     <string name="total_points">Total points score: %d</string>
     <string name="spin_the_wheel">Spin The Wheel</string>
-    <string name="enter_your_phrase">Enter your phrase</string>
+    <string name="enter_a_letter">Enter a letter</string>
     <string name="submit_phrase">Submit</string>
     <string name="play_again">Play again!</string>
     <string name="field_cannot_be_empty">Field cannot be empty!</string>
     <string name="letter_already_revealed">Letter already revealed!</string>
+    <string name="guess_the_phrase_by_revealing_letters">Guess the phrase by revealing letters</string>
 </resources>

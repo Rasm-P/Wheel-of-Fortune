@@ -1,4 +1,4 @@
-package com.example.wheeloffortune.adapter
+package com.example.wheeloffortune.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wheeloffortune.R
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.ItemViewHolder>() {
-    private val dataset = MutableLiveData<List<Char>>()
+    private val dataset = MutableLiveData<List<String>>()
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.word_title)
@@ -30,8 +30,8 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ItemViewHolder>() {
 
     }
 
-    fun setCharList(charList: List<Char>) {
-        dataset.value = charList
+    fun setCharList(wordList: List<String>) {
+        dataset.value = wordList
         notifyDataSetChanged()
     }
 }
