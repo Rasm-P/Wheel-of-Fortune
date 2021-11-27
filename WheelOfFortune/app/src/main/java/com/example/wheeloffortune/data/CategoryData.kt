@@ -5,8 +5,11 @@ import com.example.wheeloffortune.models.Category
 class CategoryData() {
 
     fun loadCategories(): List<Category> {
-        return listOf<Category>(
-            Category("Birthday", listOf("Birthday surprise party"))
+        return listOf(
+            Category("Birthday", listOf("Birthday surprise party")),
+            Category("Random", listOf("Randomized wordlist")),
+            Category("Humanity", listOf("Believing in humanity")),
+            Category("Android", listOf("Android and kotlin"))
         )
     }
 }

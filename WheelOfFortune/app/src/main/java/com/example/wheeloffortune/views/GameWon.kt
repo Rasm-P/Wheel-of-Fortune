@@ -24,6 +24,6 @@ class GameWon : Fragment() {
     }
 
     private fun playAgain() {
-        view?.findNavController()?.navigate(R.id.action_gameWon_to_wordGuessing)
+        view?.findNavController()?.popBackStack()
     }
 }

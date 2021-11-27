@@ -5,25 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Button
 import androidx.navigation.findNavController
 import com.example.wheeloffortune.R
 
-class GameLost : Fragment() {
+class GameRules : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.fragment_game_lost, container, false)
-        var points = arguments?.let { it.getInt("points") }
-        view.findViewById<TextView>(R.id.game_points).text = points.toString()
-        view.findViewById<TextView>(R.id.play_again_button).setOnClickListener { playAgain() }
-
+        var view = inflater.inflate(R.layout.fragment_game_rules, container, false)
+        view.findViewById<Button>(R.id.back_to_game).setOnClickListener { backToGame() }
         return view
     }
 
-    private fun playAgain() {
+    private fun backToGame() {
         view?.findNavController()?.popBackStack()
     }
 }

@@ -22,7 +22,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ItemViewHolder>() {
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset.value!![position]
-        holder.textView.text = item.toString()
+        holder.textView.text = item
     }
 
     override fun getItemCount(): Int {

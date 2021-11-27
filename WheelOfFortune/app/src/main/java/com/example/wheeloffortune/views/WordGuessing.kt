@@ -17,7 +17,7 @@ import com.example.wheeloffortune.utils.SpacingDecorator
 import com.example.wheeloffortune.viewModels.WordGuessingViewModel
 import com.google.android.material.snackbar.Snackbar
 
-// Made with inspiration from developer Unscramble app: https://developer.android.com/courses/pathways/android-basics-kotlin-unit-3-pathway-3
+//Built with inspiration from developer app Unscramble: https://developer.android.com/courses/pathways/android-basics-kotlin-unit-3-pathway-3
 class WordGuessing : Fragment() {
 
     private lateinit var binding: FragmentWordGuessingBinding
@@ -50,8 +50,9 @@ class WordGuessing : Fragment() {
         binding.wordGuessingViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.spinTheWheel.setOnClickListener { onWheelSpin() }
         binding.submitPhrase.setOnClickListener { onSubmitGuessPhrase() }
+        binding.spinTheWheel.setOnClickListener { onWheelSpin() }
+        binding.rulesPage.setOnClickListener { onClickRules() }
         updateViewForGuessing()
     }
 
@@ -59,7 +60,7 @@ class WordGuessing : Fragment() {
         val guessChar = binding.textInput.text.toString()
         setError(false)
 
-        if(guessChar.isNotEmpty()) {
+        if(guessChar.isNotEmpty() && guessChar.first()!=' ') {
             val firstChar = guessChar.first().lowercaseChar()
             if (viewModel.revealedCharacters.contains(firstChar)) {
                 setError(true, R.string.letter_already_revealed)
@@ -68,12 +69,12 @@ class WordGuessing : Fragment() {
                 viewModel.addRevealedChar(firstChar)
                 isGuessing = false
                 updateViewForGuessing()
-                snack("Letters revealed!")
+                snack(getString(R.string.letters_revealed))
             } else {
                 viewModel.looseLife()
                 isGuessing = false
                 updateViewForGuessing()
-                snack("The letter was not present!")
+                snack(getString(R.string.the_letter_was_not_present))
             }
 
             if (viewModel.isGameWon()) {
@@ -91,39 +92,43 @@ class WordGuessing : Fragment() {
         isGuessing = true
         when ((0..13).random()) {
             1 -> {viewModel.setPointsToAdd(100)
-                snack("Points: 100")}
+                snack(getString(R.string.points_100))}
             2 ->  {viewModel.setPointsToAdd(200)
-                snack("Points: 200")}
+                snack(getString(R.string.points_200))}
             3 -> {viewModel.setPointsToAdd(300)
-                snack("Points: 300")}
+                snack(getString(R.string.points_300))}
             4 -> {viewModel.setPointsToAdd(400)
-                snack("Points: 400")}
+                snack(getString(R.string.points_400))}
             5 -> {viewModel.setPointsToAdd(500)
-                snack("Points: 500")}
+                snack(getString(R.string.points_500))}
             6 -> {viewModel.setPointsToAdd(600)
-                snack("Points: 600")}
+                snack(getString(R.string.points_600))}
             7 -> {viewModel.setPointsToAdd(700)
-                snack("Points: 700")}
+                snack(getString(R.string.points_700))}
             8 -> {viewModel.setPointsToAdd(800)
-                snack("Points: 800")}
+                snack(getString(R.string.points_800))}
             9 -> {viewModel.setPointsToAdd(900)
-                snack("Points: 900")}
+                snack(getString(R.string.points_900))}
             10 -> {viewModel.setPointsToAdd(1000)
-                snack("Points: 1000")}
+                snack(getString(R.string.points_1000))}
             11 -> {viewModel.gainLife()
-                snack("Extra turn!")
+                snack(getString(R.string.extra_turn))
                 isGuessing = false}
             12 -> {viewModel.looseLife()
                 if (viewModel.isGameLost()) {
                     gameLost()
                 }
-                snack("Miss turn!")
+                snack(getString(R.string.miss_turn))
                 isGuessing = false}
             else -> {viewModel.bankrupt()
-                snack("Bankrupt!")
+                snack(getString(R.string.bankrupt))
                 isGuessing = false}
         }
         updateViewForGuessing()
+    }
+
+    private fun onClickRules() {
+        binding.root.findNavController().navigate(R.id.action_wordGuessing_to_gameRules)
     }
 
     private fun gameWon() {
