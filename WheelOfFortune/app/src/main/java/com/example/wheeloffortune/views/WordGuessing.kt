@@ -134,6 +134,7 @@ class WordGuessing : Fragment() {
     private fun gameWon() {
         val bundle = Bundle()
         viewModel.points.value?.let { bundle.putInt("points", it) }
+        viewModel.wordPhrase.let { bundle.putString("phrase", it) }
         binding.root.findNavController().navigate(R.id.action_wordGuessing_to_gameWon, bundle)
         viewModel.restartGame()
     }
@@ -141,6 +142,7 @@ class WordGuessing : Fragment() {
     private fun gameLost() {
         val bundle = Bundle()
         viewModel.points.value?.let { bundle.putInt("points", it) }
+        viewModel.wordPhrase.let { bundle.putString("phrase", it) }
         binding.root.findNavController().navigate(R.id.action_wordGuessing_to_gameLost, bundle)
         viewModel.restartGame()
     }

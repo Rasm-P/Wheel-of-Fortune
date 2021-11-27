@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.findNavController
 import com.example.wheeloffortune.R
 
@@ -16,7 +16,7 @@ class GameRules : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         var view = inflater.inflate(R.layout.fragment_game_rules, container, false)
-        view.findViewById<Button>(R.id.back_to_game).setOnClickListener { backToGame() }
+        view.findViewById<TextView>(R.id.back_to_game).setOnClickListener { backToGame() }
         return view
     }
 

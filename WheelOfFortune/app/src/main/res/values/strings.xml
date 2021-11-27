@@ -44,4 +44,6 @@
         been found. A user starts with 5 “lives”.
 </string>
     <string name="back">Back</string>
+    <string name="totcal_points">"Total points: "</string>
+    <string name="game_phrase">"Phrase: "</string>
 </resources>
