@@ -5,6 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.Animation.AnimationListener
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.RotateAnimation
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
@@ -22,7 +27,11 @@ class WordGuessing : Fragment() {
 
     private lateinit var binding: FragmentWordGuessingBinding
     private val viewModel: WordGuessingViewModel by viewModels()
+    private val sections = 24
+    private var degree = 0
+    private var sectorDegreesArr = IntArray(sections)
     private var isGuessing = false
+    private lateinit var wheel: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +47,9 @@ class WordGuessing : Fragment() {
         var decorator = SpacingDecorator(10)
         recyclerView.addItemDecoration(decorator)
         recyclerView.setHasFixedSize(true)
+
+        wheel = binding.wheel
+        findDegreesForSections()
 
         viewModel.wordListWithRevealed.observe(viewLifecycleOwner,
             { notes -> adapter.setCharList(notes) })
@@ -88,41 +100,65 @@ class WordGuessing : Fragment() {
         }
     }
 
+    //A when switch case with all the possible outcomes when spinning the wheel
     private fun onWheelSpin() {
         isGuessing = true
-        when ((0..13).random()) {
-            1 -> {viewModel.setPointsToAdd(100)
-                snack(getString(R.string.points_100))}
+        spinWheelAnimation()
+        when (sections - degree) {
+            1 -> {viewModel.setPointsToAdd(300)
+                snack(getString(R.string.points_300))}
             2 ->  {viewModel.setPointsToAdd(200)
                 snack(getString(R.string.points_200))}
-            3 -> {viewModel.setPointsToAdd(300)
-                snack(getString(R.string.points_300))}
-            4 -> {viewModel.setPointsToAdd(400)
-                snack(getString(R.string.points_400))}
-            5 -> {viewModel.setPointsToAdd(500)
+            3 -> {viewModel.setPointsToAdd(100)
+                snack(getString(R.string.points_100))}
+            4 -> {viewModel.setPointsToAdd(500)
                 snack(getString(R.string.points_500))}
-            6 -> {viewModel.setPointsToAdd(600)
-                snack(getString(R.string.points_600))}
-            7 -> {viewModel.setPointsToAdd(700)
-                snack(getString(R.string.points_700))}
-            8 -> {viewModel.setPointsToAdd(800)
-                snack(getString(R.string.points_800))}
-            9 -> {viewModel.setPointsToAdd(900)
-                snack(getString(R.string.points_900))}
-            10 -> {viewModel.setPointsToAdd(1000)
-                snack(getString(R.string.points_1000))}
-            11 -> {viewModel.gainLife()
+            5 -> {viewModel.setPointsToAdd(400)
+                snack(getString(R.string.points_400))}
+            6 -> {viewModel.setPointsToAdd(300)
+                snack(getString(R.string.points_300))}
+            7 -> {viewModel.setPointsToAdd(200)
+                snack(getString(R.string.points_200))}
+            8 -> {viewModel.gainLife()
                 snack(getString(R.string.extra_turn))
                 isGuessing = false}
-            12 -> {viewModel.looseLife()
+            9 -> {viewModel.setPointsToAdd(100)
+                snack(getString(R.string.points_100))}
+            10 -> {viewModel.setPointsToAdd(200)
+                snack(getString(R.string.points_200))}
+            11 -> {viewModel.setPointsToAdd(150)
+                snack(getString(R.string.points_150))}
+            12 -> {viewModel.setPointsToAdd(450)
+                snack(getString(R.string.points_450))}
+            13 -> {viewModel.looseLife()
                 if (viewModel.isGameLost()) {
                     gameLost()
                 }
                 snack(getString(R.string.miss_turn))
                 isGuessing = false}
-            else -> {viewModel.bankrupt()
+            14 -> {viewModel.setPointsToAdd(400)
+                snack(getString(R.string.points_400))}
+            15 -> {viewModel.setPointsToAdd(250)
+                snack(getString(R.string.points_250))}
+            16 -> {viewModel.setPointsToAdd(200)
+                snack(getString(R.string.points_200))}
+            17 -> {viewModel.setPointsToAdd(150)
+                snack(getString(R.string.points_150))}
+            18 -> {viewModel.setPointsToAdd(400)
+                snack(getString(R.string.points_400))}
+            19 -> {viewModel.setPointsToAdd(600)
+                snack(getString(R.string.points_600))}
+            20 -> {viewModel.setPointsToAdd(250)
+                snack(getString(R.string.points_250))}
+            21 -> {viewModel.setPointsToAdd(300)
+                snack(getString(R.string.points_300))}
+            22 -> {viewModel.bankrupt()
                 snack(getString(R.string.bankrupt))
                 isGuessing = false}
+            23 -> {viewModel.setPointsToAdd(750)
+                snack(getString(R.string.points_750))}
+            24 -> {viewModel.setPointsToAdd(250)
+                snack(getString(R.string.points_250))}
         }
         updateViewForGuessing()
     }
@@ -172,6 +208,25 @@ class WordGuessing : Fragment() {
         } else {
             binding.guessPhraseTextField.isErrorEnabled = false
             binding.textInput.text = null
+        }
+    }
+
+    //Made this spin animation with inspiration form https://youtu.be/5O2Uox-TR00
+    private fun spinWheelAnimation() {
+        degree = (0 until sections).random();
+        var rotate = RotateAnimation(
+            0F, ((360*sections) + sectorDegreesArr[degree]).toFloat(),
+            RotateAnimation.RELATIVE_TO_SELF, 0.5f, RotateAnimation.RELATIVE_TO_SELF, 0.5f)
+        rotate.duration = 360
+        rotate.fillAfter = true
+        rotate.interpolator = DecelerateInterpolator()
+        wheel.startAnimation(rotate)
+    }
+
+    private fun findDegreesForSections() {
+        var sectorDegrees = 360/sections
+        for (i in 0 until sections) {
+            sectorDegreesArr[i] = (i+1)*sectorDegrees
         }
     }
 }

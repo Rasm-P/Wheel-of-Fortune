@@ -19,7 +19,7 @@ class GameWon : Fragment() {
         var points = arguments?.let { it.getInt("points") }
         var phrase = arguments?.let { it.getString("phrase") }
         view.findViewById<TextView>(R.id.game_phrase).text = getString(R.string.game_phrase) + phrase
-        view.findViewById<TextView>(R.id.game_points).text = getString(R.string.totcal_points) + points.toString()
+        view.findViewById<TextView>(R.id.game_points).text = getString(R.string.total_points) + points.toString()
         view.findViewById<TextView>(R.id.play_again_button).setOnClickListener { playAgain() }
 
         return view

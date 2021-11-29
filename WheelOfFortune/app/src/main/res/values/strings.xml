@@ -8,7 +8,6 @@
     <string name="lives">Lives: %d</string>
     <string name="category_title">Category: %s</string>
     <string name="wrong_input">Wrong input!</string>
-    <string name="total_points">Total points score: %d</string>
     <string name="spin_the_wheel">Spin The Wheel</string>
     <string name="enter_a_letter">Enter a letter</string>
     <string name="submit_phrase">Submit</string>
@@ -19,12 +18,16 @@
     <string name="letters_revealed">Letters revealed!</string>
     <string name="the_letter_was_not_present">The letter was not present!</string>
     <string name="points_100">Points: 100</string>
+    <string name="points_150">150 points</string>
     <string name="points_200">Points: 200</string>
+    <string name="points_250">250 points</string>
     <string name="points_300">Points: 300</string>
     <string name="points_400">Points: 400</string>
+    <string name="points_450">450 points</string>
     <string name="points_500">Points: 500</string>
     <string name="points_600">Points: 600</string>
     <string name="points_700">Points: 700</string>
+    <string name="points_750">750 points</string>
     <string name="points_800">Points: 800</string>
     <string name="points_900">Points: 900</string>
     <string name="points_1000">Points: 1000</string>
@@ -32,6 +35,9 @@
     <string name="miss_turn">Miss turn!</string>
     <string name="bankrupt">Bankrupt!</string>
     <string name="rules">Rules</string>
+    <string name="back">Back</string>
+    <string name="total_points">"Total points: "</string>
+    <string name="game_phrase">"Phrase: "</string>
     <string name="game_rules">The game is for one player. When the game starts, a word is randomly chosen from predefined categories and
         displayed along with the category. The word/phrase is displayed with the letters hidden and the individual words separated for a
         phrase. The possible results of the “spinning the wheel” are: a number of points e.g 1000 or an “extra turn”, “miss turn” or
@@ -43,7 +49,4 @@
         lost. The “wheel is spun” until the game is won or lost. The game is lost when the user has no lives left and the word has not
         been found. A user starts with 5 “lives”.
 </string>
-    <string name="back">Back</string>
-    <string name="totcal_points">"Total points: "</string>
-    <string name="game_phrase">"Phrase: "</string>
 </resources>

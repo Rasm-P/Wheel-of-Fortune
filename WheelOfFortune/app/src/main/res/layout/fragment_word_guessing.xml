@@ -102,7 +102,7 @@
             app:layout_constraintBottom_toTopOf="@+id/spin_the_wheel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view">
+            app:layout_constraintTop_toBottomOf="@+id/wheel_spin">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_input"
@@ -111,6 +111,37 @@
                 android:inputType="textPersonName|textNoSuggestions"
                 android:maxLines="1"/>
         </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:id="@+id/wheel_spin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view"
+            android:layout_marginTop="16dp">
+
+            <ImageView
+                android:id="@+id/wheel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/wheel_of_fortune_spin"
+                android:adjustViewBounds="true"
+                android:cropToPadding="false"/>
+
+            <ImageView
+                android:id="@+id/circle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/wheel_of_fortune_circle"
+                android:adjustViewBounds="true"
+                android:cropToPadding="false"/>
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/rules_page"
