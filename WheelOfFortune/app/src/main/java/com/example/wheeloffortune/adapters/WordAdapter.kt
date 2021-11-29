@@ -30,6 +30,7 @@ class WordAdapter : RecyclerView.Adapter<WordAdapter.ItemViewHolder>() {
 
     }
 
+    //Sets wordList and and notifies observers that the data set has changed
     fun setCharList(wordList: List<String>) {
         dataset.value = wordList
         notifyDataSetChanged()

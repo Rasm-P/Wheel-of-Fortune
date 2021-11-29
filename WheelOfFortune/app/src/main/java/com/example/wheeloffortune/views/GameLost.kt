@@ -25,6 +25,7 @@ class GameLost : Fragment() {
         return view
     }
 
+    //Pops the backstack back to the WordGuessing view
     private fun playAgain() {
         view?.findNavController()?.popBackStack()
     }

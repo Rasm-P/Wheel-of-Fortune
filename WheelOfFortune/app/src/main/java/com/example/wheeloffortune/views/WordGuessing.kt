@@ -5,16 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.Animation.AnimationListener
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.RotateAnimation
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.customview.customView
 import com.example.wheeloffortune.R
 import com.example.wheeloffortune.adapters.WordAdapter
 import com.example.wheeloffortune.databinding.FragmentWordGuessingBinding
@@ -62,12 +63,13 @@ class WordGuessing : Fragment() {
         binding.wordGuessingViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.submitPhrase.setOnClickListener { onSubmitGuessPhrase() }
+        binding.submitLetter.setOnClickListener { onSubmitGuessPhrase() }
         binding.spinTheWheel.setOnClickListener { onWheelSpin() }
-        binding.rulesPage.setOnClickListener { onClickRules() }
+        binding.rulesPage.setOnClickListener { showRulesPopup() }
         updateViewForGuessing()
     }
 
+    //Takes the first char of the user submission and matches the letter with the phrase as well as other appropriate actions.
     private fun onSubmitGuessPhrase() {
         val guessChar = binding.textInput.text.toString()
         setError(false)
@@ -100,7 +102,7 @@ class WordGuessing : Fragment() {
         }
     }
 
-    //A when switch case with all the possible outcomes when spinning the wheel
+    //A switch case with all the possible outcomes when spinning the wheel
     private fun onWheelSpin() {
         isGuessing = true
         spinWheelAnimation()
@@ -163,10 +165,7 @@ class WordGuessing : Fragment() {
         updateViewForGuessing()
     }
 
-    private fun onClickRules() {
-        binding.root.findNavController().navigate(R.id.action_wordGuessing_to_gameRules)
-    }
-
+    //Sets total points and phrase in a bundle, navigates to the gameWon view, and restarts the game settings
     private fun gameWon() {
         val bundle = Bundle()
         viewModel.points.value?.let { bundle.putInt("points", it) }
@@ -175,6 +174,7 @@ class WordGuessing : Fragment() {
         viewModel.restartGame()
     }
 
+    //Sets total points and phrase in a bundle, navigates to the gameLost view, and restarts the game settings
     private fun gameLost() {
         val bundle = Bundle()
         viewModel.points.value?.let { bundle.putInt("points", it) }
@@ -183,24 +183,27 @@ class WordGuessing : Fragment() {
         viewModel.restartGame()
     }
 
+    //Method for standard Snackbar messages
     private fun snack(message: String, duration: Int = Snackbar.LENGTH_LONG) {
         Snackbar.make(binding.root, message, duration).show()
     }
 
+    //Method for updating the visibility of the submitLetter and spinTheWheel UI elements accordingly depending on if the user is currently guessing
     private fun updateViewForGuessing() {
         if (isGuessing) {
             binding.guessPhraseTextField.visibility = View.VISIBLE
             binding.textInput.visibility = View.VISIBLE
-            binding.submitPhrase.visibility = View.VISIBLE
+            binding.submitLetter.visibility = View.VISIBLE
             binding.spinTheWheel.visibility = View.GONE
         } else {
             binding.guessPhraseTextField.visibility = View.GONE
             binding.textInput.visibility = View.GONE
-            binding.submitPhrase.visibility = View.GONE
+            binding.submitLetter.visibility = View.GONE
             binding.spinTheWheel.visibility = View.VISIBLE
         }
     }
 
+    //Setts error for the submission text field and message accordingly depending on the input
     private fun setError(error: Boolean, stringId: Int = R.string.wrong_input) {
         if (error) {
             binding.guessPhraseTextField.isErrorEnabled = true
@@ -212,6 +215,7 @@ class WordGuessing : Fragment() {
     }
 
     //Made this spin animation with inspiration form https://youtu.be/5O2Uox-TR00
+    //Applies the rotate animation for a random number of sections based on the circular degrees for each section
     private fun spinWheelAnimation() {
         degree = (0 until sections).random();
         var rotate = RotateAnimation(
@@ -223,10 +227,18 @@ class WordGuessing : Fragment() {
         wheel.startAnimation(rotate)
     }
 
+    //Counts the circular degrees for each section of the wheel
     private fun findDegreesForSections() {
         var sectorDegrees = 360/sections
         for (i in 0 until sections) {
             sectorDegreesArr[i] = (i+1)*sectorDegrees
         }
+    }
+
+    //Shows the game rules using a MaterialDialog popup with the game_rules_dialog view
+    private fun showRulesPopup() {
+        val dialog = context?.let { MaterialDialog(it).noAutoDismiss().customView(R.layout.game_rules_dialog) }
+        dialog?.findViewById<TextView>(R.id.back_to_game)?.setOnClickListener { dialog?.dismiss() }
+        dialog?.show()
     }
 }

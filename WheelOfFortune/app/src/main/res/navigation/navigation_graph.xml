@@ -16,9 +16,6 @@
         <action
             android:id="@+id/action_wordGuessing_to_gameLost"
             app:destination="@id/gameLost" />
-        <action
-            android:id="@+id/action_wordGuessing_to_gameRules"
-            app:destination="@id/gameRules" />
     </fragment>
     <fragment
         android:id="@+id/gameLost"
@@ -30,9 +27,4 @@
         android:name="com.example.wheeloffortune.views.GameWon"
         android:label="fragment_game_won"
         tools:layout="@layout/fragment_game_won" />
-    <fragment
-        android:id="@+id/gameRules"
-        android:name="com.example.wheeloffortune.views.GameRules"
-        android:label="fragment_game_rules"
-        tools:layout="@layout/fragment_game_rules" />
 </navigation>
