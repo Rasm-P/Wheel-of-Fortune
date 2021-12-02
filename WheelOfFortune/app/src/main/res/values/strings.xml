@@ -43,6 +43,6 @@
     <string name="rule3">If the letter is not present you lose a ”life”.</string>
     <string name="rule4">In the event of “extra turn” being shown, you are given an extra life.</string>
     <string name="rule5">In the event of “miss turn” being shown, you lose a life and do not get to choose a letter.</string>
-    <string name="rule6">In the event of “bankrupt” being shown, you loose all your points.</string>
+    <string name="rule6">In the event of “bankrupt” being shown, you lose all your points.</string>
     <string name="rule7">The game is lost if you have no more lives, and won if you reveal all the words.</string>
 </resources>
