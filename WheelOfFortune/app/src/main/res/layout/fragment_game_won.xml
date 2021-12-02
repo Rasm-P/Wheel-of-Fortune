@@ -43,10 +43,11 @@
         android:id="@+id/play_again_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/play_again"
         android:layout_marginTop="16dp"
+        android:text="@string/play_again"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_points" />
+        app:layout_constraintTop_toBottomOf="@+id/game_points"
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

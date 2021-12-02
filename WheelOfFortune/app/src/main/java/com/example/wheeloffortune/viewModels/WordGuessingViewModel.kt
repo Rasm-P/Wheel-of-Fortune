@@ -90,7 +90,7 @@ class WordGuessingViewModel() : ViewModel(){
         _wordListWithRevealed.value = getPhraseWithRevealed().value
     }
 
-    //Returns true if the _revealedCharacters list contains a specific char
+    //Returns false if the _revealedCharacters list contains a specific char
     fun doesNotContainChar(char : Char) : Boolean {
         for (c in _revealedCharacters) {
             if (c == char) {

@@ -16,18 +16,6 @@
         tools:context=".views.WordGuessing">
 
         <TextView
-            android:id="@+id/instruction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/guess_the_phrase_by_revealing_letters"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/recycler_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/category_title"/>
-
-        <TextView
             android:id="@+id/lives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,13 +41,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{@string/category_title(wordGuessingViewModel.currentCategory.category)}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toTopOf="@+id/instruction"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lives"
             tools:text="Title"/>
+
+        <TextView
+            android:id="@+id/instruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/guess_the_phrase_by_revealing_letters"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category_title"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -72,25 +72,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/instruction" />
 
-        <Button
-            android:id="@+id/spin_the_wheel"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/wheel_spin"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/spin_the_wheel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guess_phrase_text_field" />
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view"
+            android:layout_marginTop="16dp">
 
-        <Button
-            android:id="@+id/submit_letter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/submit_letter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guess_phrase_text_field" />
+            <ImageView
+                android:id="@+id/wheel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="false"
+                android:importantForAccessibility="no"
+                android:scaleType="centerInside"
+                android:src="@drawable/wheel_of_fortune_spin" />
+
+            <ImageView
+                android:id="@+id/circle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="false"
+                android:importantForAccessibility="no"
+                android:scaleType="centerInside"
+                android:src="@drawable/wheel_of_fortune_circle" />
+        </RelativeLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/guess_phrase_text_field"
@@ -109,39 +121,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textPersonName|textNoSuggestions"
-                android:maxLines="1"/>
+                android:maxLines="1"
+                tools:ignore="TextContrastCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <RelativeLayout
-            android:id="@+id/wheel_spin"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/spin_the_wheel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_view"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:text="@string/spin_the_wheel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guess_phrase_text_field"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
-            <ImageView
-                android:id="@+id/wheel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/wheel_of_fortune_spin"
-                android:adjustViewBounds="true"
-                android:cropToPadding="false"/>
-
-            <ImageView
-                android:id="@+id/circle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/wheel_of_fortune_circle"
-                android:adjustViewBounds="true"
-                android:cropToPadding="false"/>
-
-        </RelativeLayout>
+        <Button
+            android:id="@+id/submit_letter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/submit_letter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guess_phrase_text_field"
+            tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/rules_page"
@@ -152,7 +156,8 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent"
+            tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
