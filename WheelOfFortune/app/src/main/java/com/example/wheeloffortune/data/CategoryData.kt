@@ -4,7 +4,7 @@ import com.example.wheeloffortune.models.Category
 
 class CategoryData() {
 
-    //Loads in Category data used in the app
+    //Loads in predefined Category data used in the app
     fun loadCategories(): List<Category> {
         return listOf(
             Category("Bird", listOf("Mute swan","Bald eagle","Woodpecker")),

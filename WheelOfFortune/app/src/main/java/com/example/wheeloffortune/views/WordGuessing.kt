@@ -203,7 +203,7 @@ class WordGuessing : Fragment() {
         }
     }
 
-    //Setts error for the submission text field and message accordingly depending on the input
+    //Setts error for the submission text field and message accordingly depending on the input: inspired by word Unscramble app
     private fun setError(error: Boolean, stringId: Int = R.string.wrong_input) {
         if (error) {
             binding.guessPhraseTextField.isErrorEnabled = true
