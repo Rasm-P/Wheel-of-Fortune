@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/wordGuessing">
+
+    <fragment
+        android:id="@+id/wordGuessing"
+        android:name="com.example.wheeloffortune.views.WordGuessing"
+        android:label="fragment_word_guessing"
+        tools:layout="@layout/fragment_word_guessing" >
+        <action
+            android:id="@+id/action_wordGuessing_to_gameWon"
+            app:destination="@id/gameWon" />
+        <action
+            android:id="@+id/action_wordGuessing_to_gameLost"
+            app:destination="@id/gameLost" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameLost"
+        android:name="com.example.wheeloffortune.views.GameLost"
+        android:label="fragment_game_lost"
+        tools:layout="@layout/fragment_game_lost" />
+    <fragment
+        android:id="@+id/gameWon"
+        android:name="com.example.wheeloffortune.views.GameWon"
+        android:label="fragment_game_won"
+        tools:layout="@layout/fragment_game_won" />
+</navigation>

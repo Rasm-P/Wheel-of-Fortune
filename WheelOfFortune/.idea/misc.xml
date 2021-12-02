@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/rasmu/Documents/Github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/list_word.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/drawable-v24/ic_error.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3072916666666667" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/drawable/gradiant_purple.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/drawable/ic_baseline_error_outline_24.xml" value="0.3072916666666667" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3072916666666667" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/fragment_game_lost.xml" value="0.36553524804177545" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/fragment_game_rules.xml" value="0.2015625" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/fragment_game_won.xml" value="0.18" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/fragment_rules.xml" value="0.2015625" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/fragment_word_guessing.xml" value="0.2" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/game_rules_dialog.xml" value="0.20063694267515925" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/layout/list_word.xml" value="0.33" />
+        <entry key="..\:/Users/rasmu/Documents/github/Wheel-of-Fortune/WheelOfFortune/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3203125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
