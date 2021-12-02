@@ -43,23 +43,11 @@
             android:text="@{@string/category_title(wordGuessingViewModel.currentCategory.category)}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/instruction"
+            app:layout_constraintBottom_toTopOf="@+id/recycler_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lives"
             tools:text="Title"/>
-
-        <TextView
-            android:id="@+id/instruction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/guess_the_phrase_by_revealing_letters"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/recycler_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/category_title"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -70,7 +58,7 @@
             app:layoutManager="LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/instruction" />
+            app:layout_constraintTop_toBottomOf="@+id/category_title" />
 
         <RelativeLayout
             android:id="@+id/wheel_spin"
@@ -140,7 +128,6 @@
             android:id="@+id/submit_letter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="@string/submit_letter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

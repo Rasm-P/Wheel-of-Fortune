@@ -95,17 +95,6 @@
         app:layout_constraintTop_toBottomOf="@id/game_rule6"/>
 
     <TextView
-        android:id="@+id/game_rule8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/rule8"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-        android:layout_margin="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/game_rule7"/>
-
-    <TextView
         android:id="@+id/back_to_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -115,6 +104,6 @@
         android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/game_rule8"/>
+        app:layout_constraintTop_toBottomOf="@id/game_rule7"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
