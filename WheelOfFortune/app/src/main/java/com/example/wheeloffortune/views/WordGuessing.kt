@@ -238,7 +238,7 @@ class WordGuessing : Fragment() {
     //Shows the game rules using a MaterialDialog popup with the game_rules_dialog view
     private fun showRulesPopup() {
         val dialog = context?.let { MaterialDialog(it).noAutoDismiss().customView(R.layout.game_rules_dialog) }
-        dialog?.findViewById<TextView>(R.id.back_to_game)?.setOnClickListener { dialog?.dismiss() }
+        dialog?.findViewById<TextView>(R.id.back_to_game)?.setOnClickListener { dialog.dismiss() }
         dialog?.show()
     }
 }
